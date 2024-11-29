@@ -1,0 +1,16 @@
+{
+  "name": "nextjs-init",
+  "version": "1.0.4",
+  "module": "src/index.ts",
+  "type": "module",
+  "bin": "dist/index.js",
+  "scripts": {
+    "dev": "bun build ./src/index.ts --outdir ./dist --watch"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
