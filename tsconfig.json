@@ -13,6 +13,6 @@
     "noUnusedParameters": true,
     "noPropertyAccessFromIndexSignature": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/auth/username/prisma/.auth.ts"],
   "outDir": "dist"
 }
