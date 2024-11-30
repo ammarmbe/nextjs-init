@@ -364,7 +364,10 @@ class ProjectInitializer {
     });
 
     console.log("");
-    this.spin(`Creating project ${this.projectName}`);
+    console.log(chalk.green(`Creating project ${this.projectName}`));
+    console.log("");
+
+    this.spin(`Installing dependencies using ${this.packageManager.manager}`);
 
     await this.initiateProject();
 
