@@ -2,7 +2,6 @@ CREATE TABLE sessions (
   id UUID PRIMARY KEY,
   user_id UUID NOT NULL,
   expires_at TIMESTAMP NOT NULL,
-  refresh_token TEXT NOT NULL,
 );
 
 CREATE TABLE users (

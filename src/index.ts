@@ -190,6 +190,12 @@ class ProjectInitializer {
     await this.copy("src/auth/(authenticated)", "src/app/(authenticated)");
     await this.copy("src/auth/middleware.ts", "src/middleware.ts");
 
+    if (this.ORM === "prisma") {
+      await this.copy("src/auth/prisma.auth.ts", "src/utils/auth.ts");
+    } else {
+      await this.copy("src/auth/neon.auth.ts", "src/utils/auth.ts");
+    }
+
     switch (this.auth) {
       case "username":
         this.exectute("install @oslojs/crypto @oslojs/encoding");
@@ -204,18 +210,10 @@ class ProjectInitializer {
             "src/auth/username/prisma/schema.prisma",
             "prisma/schema.prisma"
           );
-          await this.copy(
-            "src/auth/username/prisma/auth.ts",
-            "src/utils/auth.ts"
-          );
 
           await this.del("src/app/login/neon.action.ts");
           await this.rename("src/app/login/", "prisma.action.ts", "action.ts");
         } else {
-          await this.copy(
-            "src/auth/username/neon/auth.ts",
-            "src/utils/auth.ts"
-          );
           await this.copy(
             "src/auth/username/neon/schema.sql",
             "src/utils/schema.sql"
@@ -240,22 +238,25 @@ class ProjectInitializer {
             "src/auth/google/prisma/schema.prisma",
             "prisma/schema.prisma"
           );
-          await this.copy(
-            "src/auth/google/prisma/auth.ts",
-            "src/utils/auth.ts"
-          );
 
-          await this.del("src/app/api/neon.route.ts");
-          await this.rename("src/app/api/", "prisma.route.ts", "route.ts");
+          await this.del("src/app/api/login/callback/neon.route.ts");
+          await this.rename(
+            "src/app/api/login/callback",
+            "prisma.route.ts",
+            "route.ts"
+          );
         } else {
-          await this.copy("src/auth/google/neon/auth.ts", "src/utils/auth.ts");
           await this.copy(
             "src/auth/google/neon/schema.sql",
             "src/utils/schema.sql"
           );
 
-          await this.del("src/app/api/prisma.route.ts");
-          await this.rename("src/app/api/", "neon.route.ts", "route.ts");
+          await this.del("src/app/api/login/callback/prisma.route.ts");
+          await this.rename(
+            "src/app/api/login/callback",
+            "neon.route.ts",
+            "route.ts"
+          );
         }
 
         break;
@@ -279,7 +280,9 @@ class ProjectInitializer {
   async main() {
     const files = await fs.readdir(process.cwd());
 
-    if (files.length > 0) {
+    if (files.length === 1 && files[0] === ".git") {
+      await fs.remove(path.join(process.cwd(), ".git"));
+    } else if (files.length > 0) {
       console.log(
         chalk.red(
           "The current directory is not empty. Please run this command in an empty directory."
