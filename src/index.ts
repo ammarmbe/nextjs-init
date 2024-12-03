@@ -7,6 +7,7 @@ import fs from "fs-extra";
 import path, { dirname } from "path";
 import chalk from "chalk";
 import { fileURLToPath } from "url";
+import degit from "degit";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -116,7 +117,7 @@ class ProjectInitializer {
   }
 
   async initiateProject() {
-    await this.copy("files/template", "");
+    await degit("ammarmbe/template").clone(process.cwd());
 
     this.exectute("install");
 
