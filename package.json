@@ -1,0 +1,23 @@
+{
+  "name": "nextjs-init",
+  "version": "1.0.4",
+  "module": "src/index.ts",
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "bin": "dist/index.js",
+  "scripts": {
+    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch"
+  },
+  "type": "module",
+  "dependencies": {
+    "@inquirer/prompts": "^7.1.0",
+    "chalk": "^5.3.0",
+    "fs-extra": "^11.2.0",
+    "nanospinner": "^1.2.0"
+  }
+}
