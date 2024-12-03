@@ -1,6 +1,6 @@
 # nextjs-init
 
-Simple command line tool to generate a Next.js app with:
+Simple command line tool to generate Next.js apps with:
 
 - [Prisma](https://www.prisma.io/orm) or [Neon serverless driver](https://neon.tech/docs/serverless/serverless-driver).
 - tRPC and tanstack query ([T3](https://create.t3.gg/) stack setup).
