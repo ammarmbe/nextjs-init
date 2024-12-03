@@ -23,8 +23,7 @@
   },
   "bin": "dist/index.js",
   "scripts": {
-    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch",
-    "publish-cli": "cd files/template && git pull && cd ../.. && bun publish"
+    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch"
   },
   "type": "module",
   "dependencies": {
