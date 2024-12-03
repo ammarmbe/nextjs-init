@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/ammarmbe/nextjs-init"
   },
-  "version": "1.1.0",
+  "version": "1.1.1",
   "module": "src/index.ts",
   "devDependencies": {
     "@types/degit": "^2.8.6",
@@ -23,7 +23,8 @@
   },
   "bin": "dist/index.js",
   "scripts": {
-    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch"
+    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch",
+    "prepublish": "bun build ./src/index.ts --outdir ./dist --target node"
   },
   "type": "module",
   "dependencies": {
