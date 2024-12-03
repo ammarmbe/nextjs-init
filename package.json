@@ -1,6 +1,6 @@
 {
   "name": "nextjs-init",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "module": "src/index.ts",
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
@@ -11,7 +11,8 @@
   },
   "bin": "dist/index.js",
   "scripts": {
-    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch"
+    "dev": "bun build ./src/index.ts --outdir ./dist --target node --watch",
+    "publish-cli": "cd files/template && git pull && cd ../.. && bun publish"
   },
   "type": "module",
   "dependencies": {
