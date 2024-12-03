@@ -157,6 +157,7 @@ class ProjectInitializer {
 
         await this.copy("files/data/client/trpc", "src/trpc");
         await this.copy("files/data/client/server", "src/server");
+        await this.copy("files/data/client/api", "src/app/api");
 
         await this.del("src/app/layout.tsx");
         await this.copy("files/data/client/layout.tsx", "src/app/layout.tsx");
